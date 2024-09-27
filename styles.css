@@ -9,7 +9,7 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
+    background-color: #f4f4f4;    
     color: #333;
     padding: 20px;
 }
@@ -17,11 +17,13 @@ body {
 /* Header Styling */
 header {
     background: #333;
+    
     color: #fff;
     padding: 10px 0;
     text-align: center;
     font-size: 20px;
 }
+
 
 /* Navigation Styling */
 nav ul {
@@ -45,6 +47,24 @@ main {
 }
 
 #about {
+    text-align: center;
+}
+
+#about p {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#about img {
+    border: 5px solid #333;
+}
+
+#program {
+    text-align: left;
+    margin: 30px auto 30px 25%;
+}
+
+#contact {
     text-align: center;
 }
 
