@@ -6,6 +6,15 @@ body {
     background-color: #1f2933;
 }
 
+.about-container .profile-picture {
+    width: 200px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%; /* Optional: Circular shape */
+    border: 2px solid #3e4c59; /* Optional: Add a subtle border */
+    margin: 20px auto; /* Center the image */
+    display: block; /* Ensure proper centering */
+}
+
 header {
     background-color: #323f4b;
     padding: 1rem 2rem;
@@ -49,8 +58,15 @@ main {
 }
 
 .project img, .about-container img {
-    width: 100%;
+    width: auto; /* Do not force 100% width */
+    max-width: 100%; /* Ensure responsiveness */
     border-radius: 5px;
+}
+
+.about-container p, .project p {
+    font-size: 18px; /* Adjust as needed */
+    line-height: 1.8; /* Optional: Space between lines */
+    color: #e5e7eb; /* Optional: Specific color for the about page */
 }
 
 .project video {
@@ -60,16 +76,27 @@ main {
 
 .btn {
     display: inline-block;
-    background-color: #52606d;
-    color: white;
-    padding: 0.5rem 1rem;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
     text-decoration: none;
+    color: white;
+    background-color: #3e4c59; /* Button color */
+    border: none;
     border-radius: 5px;
-    margin: 1rem 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 auto; /* Center horizontally */
 }
 
 .btn:hover {
-    background-color: #3e4c59;
+    background-color: #52606d; /* Button hover color */
+}
+
+.resume-contact {
+    text-align: center; /* Center the entire section */
+    margin-top: 20px;
 }
 
 footer {
