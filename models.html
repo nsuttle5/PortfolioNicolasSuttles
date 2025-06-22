@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Models</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="light-rays-bg"></div>
+    <div class="texture-overlay"></div>
+    <canvas id="dust-canvas"></canvas>
+    <canvas id="golden-trails-canvas"></canvas>
+    <div class="bg-shapes">
+        <svg class="bg-shape shapeA" width="180" height="180"><ellipse cx="90" cy="90" rx="80" ry="60" fill="#fbbf2440"/></svg>
+        <svg class="bg-shape shapeB" width="320" height="320"><circle cx="160" cy="160" r="140" fill="#f59e4240"/></svg>
+        <svg class="bg-shape shapeC" width="90" height="90"><ellipse cx="45" cy="45" rx="40" ry="44" fill="#fbbf241a"/></svg>
+        <svg class="bg-shape shapeD" width="400" height="200"><ellipse cx="200" cy="100" rx="180" ry="80" fill="#fbbf2430"/></svg>
+        <svg class="bg-shape shapeE" width="70" height="70"><circle cx="35" cy="35" r="33" fill="#fbbf2444"/></svg>
+        <svg class="bg-shape shapeF" width="220" height="220"><ellipse cx="110" cy="110" rx="100" ry="60" fill="#f59e4222"/></svg>
+        <svg class="bg-shape shapeG" width="140" height="140"><circle cx="70" cy="70" r="65" fill="#fbbf241a"/></svg>
+        <svg class="bg-shape shapeH" width="300" height="300"><ellipse cx="150" cy="150" rx="120" ry="140" fill="#fbbf2430"/></svg>
+        <svg class="bg-shape shapeI" width="60" height="60"><circle cx="30" cy="30" r="28" fill="#fbbf241a"/></svg>
+        <svg class="bg-shape shapeJ" width="100" height="100"><ellipse cx="50" cy="50" rx="45" ry="30" fill="#f59e4222"/></svg>
+    </div>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Me</a>
+            <a href="projects.html">Projects</a>
+        </nav>
+    </header>
+    <main>
+        <h1 class="section-title">3D Models</h1>
+        <div class="media-list">
+            <div class="media-item fade-in">
+                <div class="media-visual">
+                    <model-viewer id="model-coffee" src="models/CoffeeMachine.glb" alt="3D Model" auto-rotate camera-controls ar></model-viewer>
+                </div>
+                <div class="media-desc">
+                    <h2>Template Title</h2>
+                    <p>Template text</p>
+                </div>
+            </div>
+            <div class="media-item fade-in">
+                <div class="media-visual">
+                    <model-viewer id="model-guitar" src="models/Guitar.glb" alt="3D Model" auto-rotate camera-controls ar></model-viewer>
+                </div>
+                <div class="media-desc">
+                    <h2>Template Title</h2>
+                    <p>Template text</p>
+                </div>
+            </div>
+            <div class="media-item fade-in">
+                <div class="media-visual">
+                    <model-viewer id="model-upgradedbeast" src="models/UpgradedBeast.glb" alt="3D Model" auto-rotate camera-controls ar></model-viewer>
+                </div>
+                <div class="media-desc">
+                    <h2>Template Title</h2>
+                    <p>Template text</p>
+                </div>
+            </div>
+            <div class="media-item fade-in">
+                <div class="media-visual">
+                    <model-viewer id="model-ferriswheel" src="models/FerrisWheel.glb" alt="3D Model" auto-rotate camera-controls ar></model-viewer>
+                </div>
+                <div class="media-desc">
+                    <h2>Template Title</h2>
+                    <p>Template text</p>
+                </div>
+            </div>
+            <div class="media-item fade-in">
+                <div class="media-visual">
+                    <model-viewer id="model-treewbell" src="models/TreeWBell.glb" alt="3D Model" auto-rotate camera-controls ar></model-viewer>
+                </div>
+                <div class="media-desc">
+                    <h2>Template Title</h2>
+                    <p>Template text</p>
+                </div>
+            </div>
+            <!-- Add more models as needed -->
+        </div>
+    </main>
+</body>
+</html>

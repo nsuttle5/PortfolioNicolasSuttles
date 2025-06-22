@@ -6,9 +6,27 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+    <!-- Add these to your HTML file -->
 </head>
 <body>
-    <div id="loader" class="loader"></div>
+    <div class="animated-bg"></div>
+    <div class="light-rays-bg"></div>
+    <div class="texture-overlay"></div>
+    <canvas id="dust-canvas"></canvas>
+    <canvas id="golden-trails-canvas"></canvas>
+    <div class="bg-shapes">
+        <svg class="bg-shape shape1" width="320" height="320"><ellipse cx="160" cy="160" rx="140" ry="120" fill="#fbbf2433"/></svg>
+        <svg class="bg-shape shape2" width="180" height="180"><circle cx="90" cy="90" r="80" fill="#f59e4233"/></svg>
+        <svg class="bg-shape shape3" width="220" height="220"><ellipse cx="110" cy="110" rx="90" ry="100" fill="#fbbf2444"/></svg>
+        <svg class="bg-shape shape4" width="140" height="140"><circle cx="70" cy="70" r="65" fill="#fbbf241a"/></svg>
+        <svg class="bg-shape shape5" width="260" height="260"><ellipse cx="130" cy="130" rx="120" ry="80" fill="#f59e421a"/></svg>
+        <!-- New, smaller and larger shapes for more depth -->
+        <svg class="bg-shape shape6" width="80" height="80"><circle cx="40" cy="40" r="38" fill="#fbbf2444"/></svg>
+        <svg class="bg-shape shape7" width="420" height="420"><ellipse cx="210" cy="210" rx="200" ry="160" fill="#fbbf2420"/></svg>
+        <svg class="bg-shape shape8" width="100" height="100"><ellipse cx="50" cy="50" rx="45" ry="30" fill="#f59e4222"/></svg>
+        <svg class="bg-shape shape9" width="60" height="60"><circle cx="30" cy="30" r="28" fill="#fbbf241a"/></svg>
+        <svg class="bg-shape shape10" width="300" height="300"><ellipse cx="150" cy="150" rx="120" ry="140" fill="#fbbf2430"/></svg>
+    </div>
     <header>
         <nav>
             <a href="index.html">Home</a>
@@ -16,34 +34,94 @@
             <a href="projects.html">Projects</a>
         </nav>
     </header>
+    <!-- Hero Header -->
+    <section class="hero-header fade-in">
+        <h1 class="main-title">
+            <span class="main-title-glow">Nicolas Suttles</span>
+        </h1>
+    </section>
     <main>
-        <section class="hero fade-in">
-            <h1>Welcome to My Portfolio</h1>
-            <h2>Nicolas Suttles</h2>
-            <p> Below are some of my best works</p>
+        <section class="intro-card fade-in">
+            <img src="Images/profilpic.jpg" alt="Profile Picture" class="profile-picture-large">
+            <div>
+                <h1>Nicolas Suttles</h1>
+                <h2>Computational Media @ Georgia Tech</h2>
+                <p class="tagline">Crafting digital experiences in art, games, and code.</p>
+                <p>
+                    Welcome! I’m passionate about digital art, animation, and technology. Explore my best works below.
+                </p>
+            </div>
         </section>
-        <section class="featured-projects">
-            <h2>Featured Projects</h2>
+        <section class="iam-section fade-in">
+            <div class="iam-container">
+                <span class="iam-label">I am a:</span>
+                <button class="iam-arrow" id="iam-prev">&#8592;</button>
+                <span class="iam-role" id="iam-role">3D Modeler</span>
+                <button class="iam-arrow" id="iam-next">&#8594;</button>
+            </div>
+        </section>
+        <section class="iknow-section fade-in">
+            <div class="iknow-container">
+                <span class="iknow-label">I know:</span>
+                <button class="iknow-arrow" id="iknow-prev">&#8592;</button>
+                <span class="iknow-logo">
+                  <img src="Images/blender-logo.png" alt="Blender" class="iknow-img" id="iknow-img-current">
+                  <img src="" alt="" class="iknow-img" id="iknow-img-next" style="opacity:0; position:absolute; left:0; top:0;">
+                </span>
+                <button class="iknow-arrow" id="iknow-next">&#8594;</button>
+            </div>
+        </section>
+        <section class="featured-projects fade-in">
+            <h2 class="section-title">Featured Projects</h2>
             <div class="projects">
-                <div class="project">
-                    <video src="Videos/LaughTrack_05.mp4" controls alt="Project 1"> </video>
-                    <p>Short Film: Laugh Track</p>
+                <div class="project fade-in">
+                    <iframe src="https://drive.google.com/file/d/1wuI_C8YEEzY92CnOscM9xNOgVYQXRL3u/preview" width="100%" height="220" frameborder="0" allowfullscreen></iframe>
+                    <div class="project-info">
+                        <p class="project-title">Short Film: Laugh Track</p>
+                    </div>
                 </div>
-                <div class="project">
-                    <video src="Videos/Hatchet_house_Final_Draft.mp4" controls alt="Project 2"> </video>
-                    <p>Short Animated Film: Hatchet House</p>
+                <div class="project fade-in">
+                    <iframe width="100%" height="220" src="https://www.youtube.com/embed/RNFLFnP9y1E"
+                        title="Hatchet House" frameborder="0" allowfullscreen></iframe>
+                    <div class="project-info">
+                        <p class="project-title">Short Animated Film: Hatchet House</p>
+                    </div>
                 </div>
-                <div class="project">
-                    <video src="Videos/chessMatch.mp4" controls alt="Project 3">
-                    <p>3D Rendering: Chess Match</p>
+                <div class="project fade-in">
+                    <iframe src="https://drive.google.com/file/d/1UDR14jFR5scqp2Rg2KPW3oxKd6ROht6A/preview" width="100%" height="220" frameborder="0" allowfullscreen></iframe>
+                    <div class="project-info">
+                        <p class="project-title">Short Film: Out Cast</p>
+                    </div>
                 </div>
             </div>
         </section>
-        <section class="resume-contact">
-            <a href="Images/Resume Nicolas Suttles.pdf" class="btn" target="_blank">Download My Resume</a>
-            <footer>
-                <p>Contact: nsuttles1754@gmail.com or nsuttles3@gatech.edu | 404-422-4126</p>
-            </footer>
+        <h2 class="explore-header section-title fade-in">Explore my creations</h2>
+        <section class="hobbies-row fade-in">
+            <div class="hobby-card" id="models-card">
+                <div class="hobby-bg hobby-bg-current" id="models-bg-current"></div>
+                <div class="hobby-bg hobby-bg-next" id="models-bg-next"></div>
+                <span class="hobby-label">Models</span>
+            </div>
+            <div class="hobby-card" id="films-card">
+                <div class="hobby-bg hobby-bg-current" id="films-bg-current"></div>
+                <div class="hobby-bg hobby-bg-next" id="films-bg-next"></div>
+                <span class="hobby-label">Films</span>
+            </div>
+            <div class="hobby-card" id="games-card">
+                <div class="hobby-bg hobby-bg-current" id="games-bg-current"></div>
+                <div class="hobby-bg hobby-bg-next" id="games-bg-next"></div>
+                <span class="hobby-label">Games</span>
+            </div>
+        </section>
+        <section class="resume-contact fade-in">
+            <div class="resume-btn-row">
+                <a href="resume.pdf" class="btn" download>Download My Resume</a>
+            </div>
+            <div class="contact-btn-row">
+                <a href="mailto:nsuttles1754@gmail.com" class="btn">Email Me</a>
+                <a href="https://www.linkedin.com/in/nicolas-suttles-53b124267/" class="btn">LinkedIn</a>
+                <!-- more contact buttons -->
+            </div>
         </section>
     </main>
 </body>
