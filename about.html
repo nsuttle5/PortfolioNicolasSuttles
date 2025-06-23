@@ -8,6 +8,23 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <div class="animated-bg"></div>
+    <div class="light-rays-bg"></div>
+    <div class="texture-overlay"></div>
+    <canvas id="dust-canvas"></canvas>
+    <canvas id="golden-trails-canvas"></canvas>
+    <div class="bg-shapes">
+        <svg class="bg-shape shapeA" width="180" height="180"><ellipse cx="90" cy="90" rx="80" ry="60" fill="#fbbf2440"/></svg>
+        <svg class="bg-shape shapeB" width="320" height="320"><circle cx="160" cy="160" r="140" fill="#f59e4240"/></svg>
+        <svg class="bg-shape shapeC" width="90" height="90"><ellipse cx="45" cy="45" rx="40" ry="44" fill="#fbbf241a"/></svg>
+        <svg class="bg-shape shapeD" width="400" height="200"><ellipse cx="200" cy="100" rx="180" ry="80" fill="#fbbf2430"/></svg>
+        <svg class="bg-shape shapeE" width="70" height="70"><circle cx="35" cy="35" r="33" fill="#fbbf2444"/></svg>
+        <svg class="bg-shape shapeF" width="220" height="220"><ellipse cx="110" cy="110" rx="100" ry="60" fill="#f59e4222"/></svg>
+        <svg class="bg-shape shapeG" width="140" height="140"><circle cx="70" cy="70" r="65" fill="#fbbf241a"/></svg>
+        <svg class="bg-shape shapeH" width="300" height="300"><ellipse cx="150" cy="150" rx="120" ry="140" fill="#fbbf2430"/></svg>
+        <svg class="bg-shape shapeI" width="60" height="60"><circle cx="30" cy="30" r="28" fill="#fbbf241a"/></svg>
+        <svg class="bg-shape shapeJ" width="100" height="100"><ellipse cx="50" cy="50" rx="45" ry="30" fill="#f59e4222"/></svg>
+    </div>
     <header>
         <nav>
             <a href="index.html">Home</a>
@@ -16,21 +33,19 @@
         </nav>
     </header>
     <main>
-        <section class="about">
-            <h1>About Me</h1>
-            <div class="about-container">
-                <img src="Images/profilpic.jpg" alt="Profile Picture" class="profile-picture">
-                <p>Welcome to my portfolio! My name is Nic and I am a 3rd year Computational Media major at Georgia Tech. 
-
-                    My main interests are keeping update to date with the latest technological advancements (specifically  
-        
-                    ones I find fascinating and unique), keeping up with the gaming industry, creating digital art via Adobe 
-        
-                    programs, and learning new technological arts such as 3D modeling and animation. I am a huge fan of most forms 
-        
-                    of digital entertainment, and my goal in life is to work in the entertainment industry in any type of digital 
-        
-                    media creation. </p>
+        <section class="about-main-card fade-in">
+            <div class="about-text">
+                <h1>About Me</h1>
+                <p>
+                    Welcome to my portfolio! My name is Nic and I am a 3rd year Computational Media major at Georgia Tech.<br><br>
+                    My main interests are keeping up to date with the latest technological advancements (especially those I find fascinating and unique), keeping up with the gaming industry, creating digital art via Adobe programs, and learning new technological arts such as 3D modeling and animation.<br><br>
+                    I am a huge fan of most forms of digital entertainment, and my goal in life is to work in the entertainment industry in any type of digital media creation.
+                </p>
+            </div>
+            <div class="about-image-fader">
+                <img src="Images/profilpic.jpg" alt="Profile 1" class="about-fade-img visible">
+                <img src="Images/profile2.jpg" alt="Profile 2" class="about-fade-img">
+                <img src="Images/profile3.jpg" alt="Profile 3" class="about-fade-img">
             </div>
         </section>
     </main>

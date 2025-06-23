@@ -544,3 +544,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+// Fade between about images
+document.addEventListener("DOMContentLoaded", () => {
+    const imgs = document.querySelectorAll('.about-fade-img');
+    let idx = 0;
+    setInterval(() => {
+        imgs.forEach((img, i) => img.classList.toggle('visible', i === idx));
+        idx = (idx + 1) % imgs.length;
+    }, 3200);
+});
