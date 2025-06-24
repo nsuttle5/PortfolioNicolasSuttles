@@ -25,6 +25,8 @@
         <svg class="bg-shape shapeI" width="60" height="60"><circle cx="30" cy="30" r="28" fill="#fbbf241a"/></svg>
         <svg class="bg-shape shapeJ" width="100" height="100"><ellipse cx="50" cy="50" rx="45" ry="30" fill="#f59e4222"/></svg>
     </div>
+    <div id="models-bg-current"></div>
+    <div id="models-bg-next"></div>
     <header>
         <nav>
             <a href="index.html">Home</a>
@@ -46,6 +48,27 @@
                 <img src="Images/profilpic.jpg" alt="Profile 1" class="about-fade-img visible">
                 <img src="Images/profile2.jpg" alt="Profile 2" class="about-fade-img">
                 <img src="Images/profile3.jpg" alt="Profile 3" class="about-fade-img">
+                <img src="Images/profile4.jpg" alt="Profile 4" class="about-fade-img">
+            </div>
+        </section>
+        <section class="about-quiz-card fade-in">
+            <div class="quiz-content" id="quiz-content">
+                <div class="quiz-intro">
+                    <h2>Get to Know Me Quiz!</h2>
+                    <p>Test your knowledge about me. Ready?</p>
+                    <button id="quiz-begin-btn">Begin Quiz</button>
+                </div>
+                <!-- Quiz questions and results will be injected here by JS -->
+            </div>
+            <div class="quiz-timer" id="quiz-timer" style="display:none;">
+                <div class="timer-svg-wrap" style="position: relative; width: 60px; height: 60px;">
+                    <svg width="60" height="60">
+                        <circle cx="30" cy="30" r="26" stroke="#fbbf24" stroke-width="6" fill="none" />
+                        <circle id="timer-circle" cx="30" cy="30" r="26" stroke="#e5e7eb" stroke-width="6" fill="none"
+                            stroke-dasharray="163.36" stroke-dashoffset="0" />
+                    </svg>
+                    <span id="timer-seconds"></span>
+                </div>
             </div>
         </section>
     </main>

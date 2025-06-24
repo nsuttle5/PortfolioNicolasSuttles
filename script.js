@@ -47,23 +47,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const prevBtn = document.getElementById("iam-prev");
     const nextBtn = document.getElementById("iam-next");
 
-    function updateRole(index) {
-        roleSpan.style.opacity = 0;
-        setTimeout(() => {
-            roleSpan.textContent = roles[index];
-            roleSpan.style.opacity = 1;
-        }, 200);
+    if (roleSpan && prevBtn && nextBtn) {
+        function updateRole(index) {
+            roleSpan.style.opacity = 0;
+            setTimeout(() => {
+                roleSpan.textContent = roles[index];
+                roleSpan.style.opacity = 1;
+            }, 200);
+        }
+
+        prevBtn.addEventListener("click", () => {
+            current = (current - 1 + roles.length) % roles.length;
+            updateRole(current);
+        });
+
+        nextBtn.addEventListener("click", () => {
+            current = (current + 1) % roles.length;
+            updateRole(current);
+        });
     }
-
-    prevBtn.addEventListener("click", () => {
-        current = (current - 1 + roles.length) % roles.length;
-        updateRole(current);
-    });
-
-    nextBtn.addEventListener("click", () => {
-        current = (current + 1) % roles.length;
-        updateRole(current);
-    });
 });
 
 // Hobby Card Background Cycling
@@ -89,6 +91,7 @@ function setupHobbyCard(cardId, bgCurrentId, bgNextId, images, link) {
     const card = document.getElementById(cardId);
     const bgCurrent = document.getElementById(bgCurrentId);
     const bgNext = document.getElementById(bgNextId);
+    if (!card || !bgCurrent || !bgNext) return; // <-- Add this line
     let idx = 0;
     let interval = null;
     let isHovering = false;
@@ -548,9 +551,227 @@ document.addEventListener("DOMContentLoaded", () => {
 // Fade between about images
 document.addEventListener("DOMContentLoaded", () => {
     const imgs = document.querySelectorAll('.about-fade-img');
+    if (imgs.length === 0) return; // No images found
+
     let idx = 0;
     setInterval(() => {
         imgs.forEach((img, i) => img.classList.toggle('visible', i === idx));
         idx = (idx + 1) % imgs.length;
     }, 3200);
 });
+
+// Quiz Data Example
+const quizQuestions = [
+    {
+        question: "What is my major at Georgia Tech?",
+        choices: ["Computer Science", "Computational Media", "Mechanical Engineering", "Business"],
+        answer: 1,
+        insight: "I'm a Computational Media major, which combines computing with design and media studies."
+    },
+    {
+        question: "How many colleges have I attended?",
+        choices: ["1", "2", "3", "20"],
+        answer: 2,
+        insight: "Initially I was at Georgia State University, then transferred to Georgia Tech. I also dual enrolled at GTC during high school!"
+    },
+    {
+        question: "Which software did I learn first",
+        choices: ["Blender", "Cinema4D", "3ds Max", "Maya"],
+        answer: 2,
+        insight: "Although I have experience with all four, I first learned 3ds Max during my Junior year of high school. This was my first computational media class, and where I fell in love with the whole field."
+    },
+    {
+        question: "Which game engine am I most comfortable with?",
+        choices: ["Unity", "Godot", "Unreal", "O3DE"],
+        answer: 0,
+        insight: "I have roughly 4 years of Unity experience, with Unreal and Godot being my second and third most comfortable engines. I will be learning O3DE this semester, so I can add it to the list soon!"
+    },
+    {
+        question: "Which of the genres of projects have I made the most of?",
+        choices: ["Models", "Games", "Drawings", "Films"],
+        answer: 3,
+        insight: "While I've done lots of projects with models and games, film has been one of my major interests for the past 6 years. I've participated in numerous film festivals and film clubs, and hope that this will be a major part of my career in the future."
+    },
+    {
+        question: "What is my favorite programming language?",
+        choices: ["C", "C#", "Python", "Java"],
+        answer: 1,
+        insight: "Given my experience with Unity, C# has become my most dominant programming language. I also have experience with Python, C, and Java, but C# is my favorite due to its versatility and ease of use in game development."
+    },
+    {
+        question: "What is my favorite movie of all time?",
+        choices: ["Shaun of the Dead", "The Night House", "Scream", "Nope"],
+        answer: 2,
+        insight: "\"What's your favorite scary movie?\""
+    },
+    {
+        question: "What is my favorite video game of all time?",
+        choices: ["Psychonauts", "Before Your Eyes", "Clair Obscur: Expedition 33", "Yakuza Kiwami 2"],
+        answer: 2,
+        insight: "Not only is this game phenomenal, but it sets the standard for how games should be made and what they can achieve. Games like this should be put in a museum. Play it!!!!"
+    },
+    {
+        question: "What is my dream job?",
+        choices: ["Creative team head", "3D Modeler", "Part of the movie industry", "All of the above"],
+        answer: 3,
+        insight: "Any opportunity that allows me to combine my skills in 3D modeling, game development, and film making is my dream job. I want to be part of a creative team that pushes the boundaries of storytelling through interactive media."
+    },
+    {
+        question: "Can you call \"shotgun\" on a horse?",
+        choices: ["Absolutely yes", "No that makes no sense", "If the horse is wide enough to seat two people at the front, yes", "If there is a miniature horse beside it, yes"],
+        answer: 1,
+        insight: "This is a debate I hold with many of my friends. I'm obligated to say that there is no right answer, but there is. Absolutely no, you cannot call shotgun on a horse. It is not a car, and it does not have a front seat. If you want to ride shotgun, get a car."
+    }
+];
+
+let quizState = {
+    current: 0,
+    score: 0,
+    timer: null,
+    timeLeft: 10,
+    answered: false
+};
+
+function showQuizIntro() {
+    document.getElementById('quiz-content').innerHTML = `
+        <div class="quiz-intro">
+            <h2>Get to Know Me Quiz!</h2>
+            <p>Test your knowledge about me. Ready?</p>
+            <button id="quiz-begin-btn">Begin Quiz</button>
+        </div>
+    `;
+    document.getElementById('quiz-timer').style.display = 'none';
+    document.getElementById('quiz-begin-btn').onclick = startQuiz;
+}
+
+function startQuiz() {
+    quizState.current = 0;
+    quizState.score = 0;
+    showQuestion();
+}
+
+function fadeOutIn(element, nextHtml, callback) {
+    element.classList.add('fade-out');
+    setTimeout(() => {
+        element.classList.remove('fade-out');
+        element.innerHTML = nextHtml;
+        if (callback) callback();
+    }, 500); // Match fadeOutDown duration
+}
+
+// Example usage in showQuestion:
+function showQuestion() {
+    const q = quizQuestions[quizState.current];
+    quizState.answered = false;
+    quizState.timeLeft = 10;
+    const quizContent = document.getElementById('quiz-content');
+    const nextHtml = `
+        <div class="quiz-question">
+            <h3>Question ${quizState.current + 1} of ${quizQuestions.length}</h3>
+            <p>${q.question}</p>
+            <div class="quiz-choices">
+                ${q.choices.map((c, i) => `<button class="quiz-choice" data-idx="${i}">${c}</button>`).join('')}
+            </div>
+            <button id="quiz-confirm-btn" disabled>Confirm</button>
+        </div>
+    `;
+    fadeOutIn(quizContent, nextHtml, () => {
+        document.getElementById('quiz-timer').style.display = 'flex';
+        document.getElementById('timer-seconds').textContent = quizState.timeLeft;
+        setTimer(10);
+
+        let selected = null;
+        document.querySelectorAll('.quiz-choice').forEach(btn => {
+            btn.onclick = () => {
+                if (quizState.answered) return;
+                document.querySelectorAll('.quiz-choice').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                selected = parseInt(btn.dataset.idx);
+                document.getElementById('quiz-confirm-btn').disabled = false;
+            };
+        });
+
+        document.getElementById('quiz-confirm-btn').onclick = () => {
+            if (selected !== null && !quizState.answered) {
+                quizState.answered = true;
+                clearInterval(quizState.timer);
+                showAnswer(selected);
+            }
+        };
+    });
+}
+
+// Use fadeOutIn in showAnswer and showResults as well, in the same way.
+
+function showAnswer(selected) {
+    const q = quizQuestions[quizState.current];
+    const correct = selected === q.answer;
+    if (correct) quizState.score++;
+    document.getElementById('quiz-content').innerHTML = `
+        <div class="quiz-answer">
+            <h3>${correct ? "Correct!" : "Incorrect."}</h3>
+            <p>${q.insight}</p>
+            <button id="quiz-next-btn">${quizState.current < quizQuestions.length - 1 ? "Next Question" : "See Results"}</button>
+        </div>
+    `;
+    document.getElementById('quiz-timer').style.display = 'none';
+    document.getElementById('quiz-next-btn').onclick = () => {
+        quizState.current++;
+        if (quizState.current < quizQuestions.length) {
+            showQuestion();
+        } else {
+            showResults();
+        }
+    };
+}
+
+function showResults() {
+    document.getElementById('quiz-content').innerHTML = `
+        <div class="quiz-results">
+            <h2>Quiz Complete!</h2>
+            <p>You got ${quizState.score} out of ${quizQuestions.length} correct.</p>
+            <button id="quiz-retry-btn">Try Again</button>
+        </div>
+    `;
+    document.getElementById('quiz-timer').style.display = 'none';
+    document.getElementById('quiz-retry-btn').onclick = showQuizIntro;
+}
+
+function setTimer(seconds) {
+    const circle = document.getElementById('timer-circle');
+    const total = 2 * Math.PI * 26; // Circumference for r=26
+    quizState.timeLeft = seconds;
+    let start = null;
+    let lastSeconds = seconds;
+
+    function animate(now) {
+        if (!start) start = now;
+        const elapsed = (now - start) / 1000;
+        const remaining = Math.max(0, seconds - elapsed);
+        quizState.timeLeft = Math.ceil(remaining);
+        document.getElementById('timer-seconds').textContent = quizState.timeLeft;
+
+        // Animate the circle smoothly
+        circle.style.strokeDashoffset = total * (1 - remaining / seconds);
+
+        if (remaining > 0 && !quizState.answered) {
+            requestAnimationFrame(animate);
+        } else {
+            if (!quizState.answered) {
+                quizState.answered = true;
+                showAnswer(null);
+            }
+        }
+    }
+
+    // Reset circle and timer text
+    circle.style.strokeDasharray = total;
+    circle.style.strokeDashoffset = 0;
+    document.getElementById('timer-seconds').textContent = seconds;
+
+    // Cancel any previous timer
+    if (quizState.timer) cancelAnimationFrame(quizState.timer);
+    quizState.timer = requestAnimationFrame(animate);
+}
+
+document.addEventListener("DOMContentLoaded", showQuizIntro);
