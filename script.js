@@ -775,3 +775,58 @@ function setTimer(seconds) {
 }
 
 document.addEventListener("DOMContentLoaded", showQuizIntro);
+
+// Interactive screenshot row for Games page with auto-advance
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.body.classList.contains('games-page')) {
+        document.querySelectorAll('.game-screens-row').forEach(row => {
+            let thumbs = Array.from(row.querySelectorAll('.game-screen-thumb'));
+            let current = thumbs.findIndex(img => img.classList.contains('active'));
+            if (current === -1) current = 0;
+            let interval = null;
+            const ADVANCE_TIME = 4000; // ms
+
+            function setActive(idx) {
+                thumbs.forEach((img, i) => img.classList.toggle('active', i === idx));
+                current = idx;
+            }
+
+            function next() {
+                setActive((current + 1) % thumbs.length);
+            }
+
+            function startAutoAdvance() {
+                stopAutoAdvance();
+                interval = setInterval(next, ADVANCE_TIME);
+            }
+
+            function stopAutoAdvance() {
+                if (interval) clearInterval(interval);
+                interval = null;
+            }
+
+            // Hover/focus/click events
+            thumbs.forEach((img, idx) => {
+                img.addEventListener('mouseenter', () => {
+                    setActive(idx);
+                    stopAutoAdvance();
+                });
+                img.addEventListener('focus', () => {
+                    setActive(idx);
+                    stopAutoAdvance();
+                });
+                img.addEventListener('click', () => {
+                    setActive(idx);
+                    stopAutoAdvance();
+                });
+            });
+
+            row.addEventListener('mouseleave', () => {
+                startAutoAdvance();
+            });
+
+            // Start auto-advance on load
+            startAutoAdvance();
+        });
+    }
+});

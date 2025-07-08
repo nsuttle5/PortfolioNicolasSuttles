@@ -967,13 +967,6 @@ footer {
     }
 }
 
-
-
-
-
-
-
-
 .films-page main,
 .films-page header,
 .films-page .media-list,
@@ -1044,4 +1037,90 @@ footer {
         max-width: 100vw;
         height: auto;
     }
+}
+
+/* Games page: main game image styles */
+.games-page .game-thumb-link {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 4px 32px rgba(251,191,36,0.13), 0 2px 16px rgba(0,0,0,0.18);
+    border: 4px solid #fbbf24;
+    transition: box-shadow 0.3s, border-color 0.3s, transform 0.25s;
+}
+
+.games-page .game-thumb {
+    width: 100%;
+    display: block;
+    border-radius: 18px;
+    transition: transform 0.25s, filter 0.25s;
+    filter: brightness(0.98) saturate(1.1);
+}
+
+.games-page .game-thumb-link:hover,
+.games-page .game-thumb-link:focus {
+    box-shadow: 0 0 32px 8px #fbbf24cc, 0 4px 32px rgba(251,191,36,0.18);
+    border-color: #fffbe6;
+    transform: scale(1.045);
+}
+
+.games-page .game-thumb-link:hover .game-thumb,
+.games-page .game-thumb-link:focus .game-thumb {
+    transform: scale(1.06);
+    filter: brightness(1.08) saturate(1.25) drop-shadow(0 0 16px #fbbf2477);
+}
+
+.games-page .game-screens-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.2rem;
+    justify-content: center;   /* Center the screenshots horizontally */
+    align-items: center;
+    min-height: 160px;
+}
+
+.games-page .game-screen-thumb {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #fbbf24;
+    box-shadow: 0 2px 8px rgba(251,191,36,0.10);
+    transition: width 0.5s cubic-bezier(.77,0,.18,1), 
+                height 0.5s cubic-bezier(.77,0,.18,1), 
+                box-shadow 0.4s cubic-bezier(.77,0,.18,1), 
+                border-color 0.4s cubic-bezier(.77,0,.18,1), 
+                filter 0.4s cubic-bezier(.77,0,.18,1);
+    cursor: pointer;
+    filter: brightness(0.92) grayscale(0.2);
+}
+
+.games-page .game-screen-thumb.active,
+.games-page .game-screen-thumb:hover,
+.games-page .game-screen-thumb:focus {
+    width: 150px;
+    height: 150px;
+    box-shadow: 0 0 16px 4px #fbbf24cc, 0 2px 12px rgba(251,191,36,0.18);
+    border-color: #fffbe6;
+    z-index: 2;
+    filter: brightness(1.08) saturate(1.2);
+}
+
+.games-page main {
+    padding-bottom: 4rem;
+}
+
+.models-page main {
+    padding-bottom: 4rem;
+}
+
+.films-page main {
+    padding-bottom: 4rem;
+}
+
+.home-page main {
+    padding-bottom: 4rem;
 }
