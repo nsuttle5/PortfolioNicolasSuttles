@@ -1019,6 +1019,23 @@ footer {
     transition: box-shadow 0.3s;
 }
 
+.models-page .media-visual model-viewer,
+.models-page .media-visual img,
+.models-page .media-visual video,
+.models-page .media-visual .model-thumbnail {
+    width: 100%;
+    max-width: 700px;   /* or your preferred value */
+    aspect-ratio: 1 / 1; /* or adjust for your models */
+    height: auto;
+    border-radius: 18px;
+    background: #222;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.18);
+    display: block;
+    margin: 0 auto 1.5rem auto;
+    object-fit: cover;
+    transition: box-shadow 0.3s;
+}
+
 @media (max-width: 600px) {
     .films-page .media-visual iframe,
     .films-page .media-visual video,
