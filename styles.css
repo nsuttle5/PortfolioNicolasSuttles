@@ -1124,3 +1124,24 @@ footer {
 .home-page main {
     padding-bottom: 4rem;
 }
+
+/* Other Projects page */
+.other-project-block {
+    max-width: 1400px;
+    width: 95vw;
+    margin: 0 auto 4rem auto;
+}
+
+.subsection-title {
+    color: #fbbf24;
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+}
+
+.subsection-intro {
+    color: #e5e7eb;
+    max-width: 900px;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
